@@ -1,0 +1,46 @@
+/* Set the font family for the component */
+.repositories {
+    font-family: sans-serif;
+  }
+  
+  /* Style the repository list */
+  .repositories ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .repositories li {
+    margin-bottom: 10px;
+  }
+  
+  .repositories li a {
+    color: #0366d6;
+    text-decoration: none;
+    font-weight: bold;
+  }
+  
+  .repositories li a:hover {
+    text-decoration: underline;
+  }
+  
+  /* Style the pagination links */
+  .pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+  }
+  
+  .pagination a {
+    color: #0366d6;
+    margin: 0 5px;
+    text-decoration: none;
+  }
+  
+  .pagination a:hover {
+    text-decoration: underline;
+    font-weight: bold;
+  }
+  
+  .pagination .active {
+    font-weight: bold;
+  }

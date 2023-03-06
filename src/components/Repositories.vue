@@ -1,0 +1,75 @@
+<template>
+  <div>
+    <h1>Repositories</h1>
+    <h2></h2>
+    <ul>
+      <li v-for="repo in paginatedRepositories" :key="repo.id">
+        <router-link :to="{ name: 'Repository', params: { name: repo.name } }">{{ repo.name }}</router-link>
+      </li>
+    </ul>
+    <div v-if="pageCount > 1">
+      <ul>
+        <li v-for="n in pageCount" :key="n">
+          <router-link :to="{ name: 'Repositories', query: { page: n } }">{{ n }}</router-link>
+        </li>
+      </ul>
+    </div>
+  </div>
+</template>
+
+<!-- Disable eslint rule for component name -->
+<!-- eslint-disable vue/multi-word-component-names -->
+<script type="text/javascript">
+export default {
+  name: "Repositories",
+  data() {
+    return {
+      repositories: [],
+      pagination: {
+        perPage: 10,
+        currentPage: 1,
+      },
+    };
+  },
+  created() {
+    this.fetchRepositories();
+  },
+  methods: {
+  fetchRepositories() {
+    
+    fetch(`https://api.github.com/users/makydebbie/repos`, {
+      headers: {
+        Authorization: `token ${process.env.VUE_APP_GITHUB_ACCESS_TOKEN}`
+      }
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        this.repositories = data;
+      });
+  },
+},
+  computed: {
+    pageCount() {
+      return Math.ceil(this.repositories.length / this.pagination.perPage);
+    },
+    paginatedRepositories() {
+      const startIndex = (this.pagination.currentPage - 1) * this.pagination.perPage;
+      const endIndex = startIndex + this.pagination.perPage;
+      return this.repositories.slice(startIndex, endIndex);
+    },
+  },
+};
+</script>
+
+
+
+<!-- methods: {
+  fetchRepositories() {
+    const token = "YOUR_ACCESS_TOKEN";
+    fetch(`https://api.github.com/user/repos`, {
+      headers: {
+        Authorization: `token ${token}`,
+      },
+    })
+      .then((response) => response.json())
+      .then -->
