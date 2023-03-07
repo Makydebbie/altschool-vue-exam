@@ -39,9 +39,8 @@ export default {
 </script>
 
 <style>
-body {
-  background-color: grey;
-}
+
+
 
 
 a:link, a:visited {
@@ -54,6 +53,35 @@ a:link, a:visited {
   display: inline-block;
   border-radius: 10px;
   margin-bottom: 10px;
+}
+
+.container {
+  padding: 0 50px;
+}
+
+.heading {
+  border-bottom: 1px solid #e3e3e3;
+  padding-bottom: 10px;
+}
+
+.pill {
+  display: flex;
+  justify-content: center;
+  padding: 5px;
+  border: 1px solid #e3e3e3;
+  border-radius: 10px;
+  margin: 5px;
+}
+
+.list-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.avatar {
+  width: 50px;
+  height: 50px;
 }
 
 </style>

@@ -1,12 +1,12 @@
 <template>
-  <div>
-    <h1>Repositories</h1>
-    <h2></h2>
-    <ul>
-      <li v-for="repo in paginatedRepositories" :key="repo.id">
+  <div class="container">
+    <h1 class="heading">Dzifa's Repositories</h1>
+    <div class="list-container">
+      <div class="pill" v-for="repo in paginatedRepositories" :key="repo.id">
+        <img class="avatar" :src="'https://avatars.dicebear.com/api/big-smile/' + repo.id + '.png'" alt="">
         <router-link :to="{ name: 'Repository', params: { name: repo.name } }">{{ repo.name }}</router-link>
-      </li>
-    </ul>
+      </div>
+    </div>
     <div v-if="pageCount > 1">
       <ul>
         <li v-for="n in pageCount" :key="n">
