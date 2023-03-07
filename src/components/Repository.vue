@@ -19,11 +19,7 @@
     },
     created() {
   const repositoryName = this.$route.params.name;
-  fetch(`https://api.github.com/repos/makydebbie/${repositoryName}`, {
-    headers: {
-      Authorization: `token ${process.env.VUE_APP_GITHUB_ACCESS_TOKEN}`
-    }
-  })
+  fetch(`https://api.github.com/repos/makydebbie/${repositoryName}`)
     .then(response => response.json())
     .then(data => {
       this.repository = data;

@@ -37,11 +37,7 @@ export default {
   methods: {
   fetchRepositories() {
     
-    fetch(`https://api.github.com/users/makydebbie/repos`, {
-      headers: {
-        Authorization: `token ${process.env.VUE_APP_GITHUB_ACCESS_TOKEN}`
-      }
-    })
+    fetch(`https://api.github.com/users/makydebbie/repos`)
       .then((response) => response.json())
       .then((data) => {
         this.repositories = data;
